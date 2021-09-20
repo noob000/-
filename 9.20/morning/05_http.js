@@ -14,9 +14,17 @@ http.createServer((request, response) => {
                 return
             }
             response.statusCode = 200;
-            response.setHeader('Content-type', 'text/html');
+            response.setHeader('Content-Type', 'text/html');
             response.end(data)
         })
+    }
+    else if (url === '/users' && method === "GET") {
+        response.writeHead(200, {
+            'Content-Type': 'application.json'
+        })
+    }
+    else if (method === 'GET' && Headers.accept.indexOf('image/*')) {
+        fs.createReadStream('.' + url).pipe(response)
     }
     else {
         response.statusCode == 404
