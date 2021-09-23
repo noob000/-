@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type='text' />
+    <a href="www.baidu.com">baidu</a>
+    <div></div>
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+</body>
+/*  
+阻止touchstart 默认事件
+1.阻止滚动条滚动
+2.页面缩放
+3.超链接
+4.所有的鼠标事件在移动端的执行
+5.表单相关事件获得焦点
+6.长按菜单
+阻止touchmove 默认事件
+1.滚动条滚动
+2页面缩放
+*/
+<script>
+    document.addEventListener("touchstart", (event) => {
+        event.preventDefault();
+    }, {
+        passive: false
+    })
+</script>
+
+</html>
