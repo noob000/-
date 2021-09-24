@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+</style>
+
+<body>
+    <div class='box1'></div>
+    <button class='butt'>click</button>
+</body>
+<script>
+    const addSlideRightEvent = (element, distX = 100) => {
+        const myEvent = new CustomEvent("slideRight");
+        let startX = 0,
+            moveX = 0;;
+        const move = (event) => {
+            moveX = startX - event.touches[0].clientX;
+        }
+        const endEvent = () => {
+            document.removeEventListener("touchmove", move);
+            element.removeEventListener("touchend", endEvent)
+            if (Math.abs(moveX) > distX) element.dispatchEvent(myEvent)
+        }
+
+        element.addEventListener("touchstart", (event) => {
+            startX = event.touches[0].clientX
+            document.addEventListener("touchmove", move);
+            document.addEventListener("touchend", endEvent)
+        })
+
+    }
+    const box1 = document.querySelector('.box1');
+    addSlideRightEvent(box1);
+    box1.addEventListener("slideRight", () => {
+        console.log('slide to right exceed 100px')
+    });
+    const button = document.querySelector('.butt');
+    button.addEventListener("click", () => {
+        console.log("click")
+    })
+</script>
+
+</html>
